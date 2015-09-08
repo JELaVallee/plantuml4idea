@@ -1,6 +1,24 @@
 plantuml4idea
 =============
 
+
+**Branch Notes**
+==
+**branch:**
+jel-feature-misscache-on-render-error
+
+**purpose:**
+
+Currently, if the there is an error in rendering (as regularly occurs when the ToolWindow is being updated during an incomplete puml edit), then the zoom/scroll image cache is replaced with the green/red-on-black error image produced by the PlantUml rendering engine.  If you're working on a particularly large (e.g. larger than the visible display area of the PlantUML ToolWindow) this can cause for a jarring UX as the area a developer may be looking at/editing in the diagram suddenly disappears back to 0,0 origin.   
+
+**methodology:**
+
+Going to see if there is a way to capture the error state from the PlantUml rendering engine and block the rendering of the image... instead, display the error image in a bubble overlay over top the cached pre-error render state.  Clear the presentation of the error message when the next non-error image update occurs.
+
+==
+
+
+
 Intellij [IDEA plugin for PlantUML](http://plugins.intellij.net/plugin/?idea&id=7017)
 
 This plugin provides integration with popular [PlantUML](http://plantuml.sourceforge.net/) diagramming tool
